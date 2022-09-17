@@ -25,13 +25,25 @@ const updateCustomer=(req,resp)=>{
     });
 }
 const getCustomer=(req,resp)=>{
-
+    Customer.findOne({id: req.headers.id}).then(result=>{
+        resp.status(200).json(result);
+    }).catch(error=>{
+        resp.status(500).json(error);
+    })
 }
 const deleteCustomer=(req,resp)=>{
-
+    Customer.deleteOne({id: req.headers.id}).then(result=>{
+        resp.status(200).json(result);
+    }).catch(error=>{
+        resp.status(500).json(error);
+    })
 }
 const getAllCustomers=(req,resp)=>{
-
+    Customer.find().then(result=>{
+        resp.status(200).json(result);
+    }).catch(error=>{
+        resp.status(500).json(error);
+    })
 }
 
 module.exports = {
