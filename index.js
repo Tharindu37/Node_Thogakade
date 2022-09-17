@@ -1,5 +1,6 @@
 const express = require('express');
 const  mongoose = require('mongoose');
+const bodyParser = require('body-parser')
 require('dotenv').config();
 
 const port = process.env.PORT;
@@ -7,6 +8,9 @@ const port = process.env.PORT;
 const CustomerRoute = require('./route/CustomerRoute');
 
 const app = express();
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 mongoose.connect('mongodb://localhost:27017/thogakade').then(()=>{
     app.listen(port,()=>{
