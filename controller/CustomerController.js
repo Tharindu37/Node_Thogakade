@@ -46,10 +46,26 @@ const getAllCustomers=(req,resp)=>{
     })
 }
 
+const searchCustomer=(req,resp)=>{
+    Customer.find({
+        $or:[
+            {id: req.headers.text},
+            {name: req.headers.text},
+            {address: req.headers.text},
+            {salary: req.headers.text}
+        ]
+    }).then(result=>{
+        resp.status(200).json(result);
+    }).catch(error=>{
+        resp.status(500).json(error);
+    })
+}
+
 module.exports = {
     saveCustomer,
     updateCustomer,
     deleteCustomer,
     getCustomer,
-    getAllCustomers
+    getAllCustomers,
+    searchCustomer
 }
