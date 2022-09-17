@@ -4,6 +4,8 @@ require('dotenv').config();
 
 const port = process.env.PORT;
 
+const CustomerRoute = require('./route/CustomerRoute');
+
 const app = express();
 
 mongoose.connect('mongodb://localhost:27017/thogakade').then(()=>{
@@ -14,5 +16,5 @@ mongoose.connect('mongodb://localhost:27017/thogakade').then(()=>{
 
 })
 
-
+app.use('/api/v1/customer',CustomerRoute);
 
