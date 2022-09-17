@@ -25,3 +25,11 @@ const deleteCustomer=(req,resp)=>{
 const getAllCustomers=(req,resp)=>{
 
 }
+
+module.exports = {
+    saveCustomer,
+    updateCustomer,
+    deleteCustomer,
+    getCustomer,
+    getAllCustomers
+}
