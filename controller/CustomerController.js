@@ -51,8 +51,7 @@ const searchCustomer=(req,resp)=>{
         $or:[
             {id: req.headers.text},
             {name: req.headers.text},
-            {address: req.headers.text},
-            {salary: req.headers.text}
+            {address: req.headers.text}
         ]
     }).then(result=>{
         resp.status(200).json(result);
