@@ -14,7 +14,15 @@ const saveCustomer=(req,resp)=>{
     });
 }
 const updateCustomer=(req,resp)=>{
-
+    Customer.updateOne({id: req.body.id},{
+        name: req.body.name,
+        address: req.body.address,
+        salary: req.body.salary
+    }).then(result=>{
+        resp.status(201).json(result);
+    }).catch(error=>{
+        resp.status(500).json(error);
+    });
 }
 const getCustomer=(req,resp)=>{
 
