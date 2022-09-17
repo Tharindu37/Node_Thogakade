@@ -49,9 +49,9 @@ const getAllCustomers=(req,resp)=>{
 const searchCustomer=(req,resp)=>{
     Customer.find({
         $or:[
-            {id: req.headers.text},
-            {name: req.headers.text},
-            {address: req.headers.text}
+            {id: {$regex: req.headers.text, $options: 'i'}},
+            {name: {$regex: req.headers.text, $options: 'i'}},
+            {address: {$regex: req.headers.text, $options: 'i'}}
         ]
     }).then(result=>{
         resp.status(200).json(result);
